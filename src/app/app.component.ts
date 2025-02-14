@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-//import { LoginService } from './services/login/login.service';
+
 
 @Component({
   selector: 'app-root',
@@ -8,10 +8,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'login';
-
-  /*constructor(public loginService: LoginService) {}
-
-  isAuthenticated() {
-    return this.loginService.isLoggedIn();
-  }*/
+  
 }

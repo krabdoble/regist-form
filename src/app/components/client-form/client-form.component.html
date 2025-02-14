@@ -1,4 +1,4 @@
-<form  [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+<form  [formGroup]="clientForm" (ngSubmit)="onSubmit()" class="container mt-4">
   <div>
     <label for="firstName" class="form-label"><strong>First Name:</strong></label>
     <input id="firstName" formControlName="firstName" class="form-control"  type="text" required />

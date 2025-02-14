@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {Router} from '@angular/router';
 import {GoogleAuthProvider} from '@angular/fire/auth';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,7 @@ export class LoginService {
     this.firebaseAuth
     .signInWithPopup(provider)
     .then(()=>{
-      this.router.navigate(['home']);
+      this.router.navigate(['/navbar']);
     })
     .catch((error)=>{
       console.log(error);
@@ -42,13 +43,17 @@ export class LoginService {
     .signOut()
     .then(()=>{
       this.router.navigate(['login']);
+      
     })
     .catch((error)=>{
       console.log(error);
     });
   }
   
-    isLoggedIn(){
-      return this.user;
-    }
+      isLoggedIn(): Observable<boolean> {
+        return this.firebaseAuth.authState.pipe(
+          map(user => !!user) 
+        );
+      }
+      
 }
